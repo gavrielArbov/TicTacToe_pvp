@@ -18,6 +18,8 @@ class MenuViewController: UIViewController {
 
         playerId = UUID().uuidString
         roomId = UUID().uuidString
+        
+
     }
     
 
@@ -27,7 +29,6 @@ class MenuViewController: UIViewController {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("connections").observe(.value, with: { [self] (snapshot) -> Void in
-            
             if(!opponentFound){
                 if(snapshot.hasChildren()){
                     if let result = snapshot.children.allObjects as? [DataSnapshot] {
@@ -35,7 +36,7 @@ class MenuViewController: UIViewController {
                             connectionId = child.key
                                 
                             let playersCount = child.childrenCount
-                            print(playersCount)
+
                             if(status == "waiting"){
                                 if(playersCount == 2){
                                     var playerFound = false
@@ -49,6 +50,9 @@ class MenuViewController: UIViewController {
                                         else if(playerFound){
                                             opponentFound = true
                                             UserDefaults.standard.set(connectionId, forKey: "connectionId")
+                                            UserDefaults.standard.set(playerId, forKey: "playerId")
+                                            ref.child("turns").child(connectionId).child(playerId).setValue(user)
+                                            UserDefaults.standard.set("true", forKey: "isFirst")
                                             present((storyboard?.instantiateViewController(withIdentifier: "game"))!, animated: true)
                                         }
                                     }
@@ -60,12 +64,13 @@ class MenuViewController: UIViewController {
                                 if(playersCount == 1){
                                     ref.child("connections").child(connectionId).child(playerId).child("player_name").setValue(user)
                                     UserDefaults.standard.set(connectionId, forKey: "connectionId")
+                                    UserDefaults.standard.set(playerId, forKey: "playerId")
+                                    UserDefaults.standard.set("false", forKey: "isFirst")
                                     present((storyboard?.instantiateViewController(withIdentifier: "game"))!, animated: true)
                                 }
                             }
                         }
                     }
-                    
                     
                 }
                 else{
@@ -76,31 +81,7 @@ class MenuViewController: UIViewController {
                 
             }
             
-            
-            
-            
-            /*
-            let playersCount = snapshot.childrenCount
-            
-            // create room
-            if(playersCount == 0 || playersCount == 2){
-                ref.child("connections").child(roomId).child(playerId).setValue(user)
-            }
-            // join room
-            else if(playersCount == 1){
-                print(snapshot.key)
-            }
-            */
-
-            
         })
-        
-        
-        //ref.child("connections").child(roomId).setValue(["username": user])
-        
-        
-        
-        
-        //present((storyboard?.instantiateViewController(withIdentifier: "game"))!, animated: true)
+
     }
 }

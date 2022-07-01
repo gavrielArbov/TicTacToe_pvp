@@ -1,0 +1,6 @@
+framework module Pods_TicTacToe_pvp {
+  umbrella header "Pods-TicTacToe_pvp-umbrella.h"
+
+  export *
+  module * { export * }
+}
