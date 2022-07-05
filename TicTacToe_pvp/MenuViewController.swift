@@ -48,11 +48,13 @@ class MenuViewController: UIViewController {
                                             playerFound = true
                                         }
                                         else if(playerFound){
+                                            
                                             opponentFound = true
                                             UserDefaults.standard.set(connectionId, forKey: "connectionId")
                                             UserDefaults.standard.set(playerId, forKey: "playerId")
-                                            ref.child("turns").child(connectionId).child(playerId).setValue(user)
+                                            
                                             UserDefaults.standard.set("true", forKey: "isFirst")
+                                            ref.child("turns").child(connectionId).child(playerId).setValue(user)
                                             present((storyboard?.instantiateViewController(withIdentifier: "game"))!, animated: true)
                                         }
                                     }

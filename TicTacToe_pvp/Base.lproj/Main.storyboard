@@ -268,6 +268,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" systemColor="systemIndigoColor"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pY-5n-30v">
+                                <rect key="frame" x="110" y="734" width="195" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -288,6 +295,7 @@
                         <outlet property="cell20" destination="yrG-hD-YVb" id="PPQ-lN-80J"/>
                         <outlet property="cell21" destination="oy6-bP-0T2" id="58k-t8-dj4"/>
                         <outlet property="cell22" destination="bUr-bP-F1a" id="dT2-Xw-7xc"/>
+                        <outlet property="finalVerdict" destination="0pY-5n-30v" id="Uwe-am-2Ot"/>
                         <outlet property="player1" destination="GHN-bR-dOI" id="Iz0-Le-rMB"/>
                         <outlet property="player1Bar" destination="mzY-rA-wnN" id="USz-48-PVg"/>
                         <outlet property="player2" destination="4hC-bO-XVl" id="Y7p-Ux-s8e"/>
@@ -298,11 +306,56 @@
             </objects>
             <point key="canvasLocation" x="957.97101449275374" y="-15.401785714285714"/>
         </scene>
+        <!--Final View Controller-->
+        <scene sceneID="XHf-7d-504">
+            <objects>
+                <viewController storyboardIdentifier="final" id="JXm-Ul-Bk5" customClass="FinalViewController" customModule="TicTacToe_pvp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2um-S2-iDm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="D5k-CT-sYN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beZ-UK-MuI">
+                                <rect key="frame" x="122" y="357" width="170" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Return To Menu"/>
+                                <connections>
+                                    <action selector="quickClicked:" destination="9W0-I2-qDu" eventType="touchUpInside" id="qDC-Tu-g8h"/>
+                                    <action selector="returnClicked:" destination="JXm-Ul-Bk5" eventType="touchUpInside" id="6Qq-2W-RBD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90U-6N-nHG">
+                                <rect key="frame" x="135" y="221" width="180" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pnw-TX-Ise"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="result" destination="90U-6N-nHG" id="0bD-X1-Y86"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iE2-Y6-B44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718.840579710145" y="-15.401785714285714"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="2000" height="4032"/>
         <image name="minus" width="512" height="512"/>
         <image name="minus2" width="512" height="512"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

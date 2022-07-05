@@ -26,13 +26,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var player2: UILabel!
     @IBOutlet weak var player2Bar: UIActivityIndicatorView!
     
+    @IBOutlet weak var finalVerdict: UILabel!
     var playerId = ""
     var isFirst = ""
     var isMyTurn = false
     var connectionId = ""
     var player = ""
+    var opponent = ""
     var ref: DatabaseReference!
     var opponentId = ""
+    var board: [String: String] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,9 +47,11 @@ class ViewController: UIViewController {
         
         if(isFirst == "true"){
             player = "x.png"
+            opponent = "o.png"
         }
         else{
             player = "o.png"
+            opponent = "x.png"
         }
         
         ref.child("connections").child(connectionId).observeSingleEvent(of: .value, with: { [self] (snapshot) -> Void in
@@ -54,7 +59,12 @@ class ViewController: UIViewController {
                 for child in result {
                     if(child.key != playerId){
                         opponentId = child.key
-                        //print(child("player_name"))
+                        let opponentName = child.value as! [String: Any]
+                        player2.text = "\(opponentName["player_name"]!)"
+                    }
+                    else{
+                        let playerName = child.value as! [String: Any]
+                        player1.text = "\(playerName["player_name"]!)"
                     }
                 }
             }
@@ -67,10 +77,12 @@ class ViewController: UIViewController {
                         isMyTurn = true
                         player1Bar.startAnimating()
                         player2Bar.stopAnimating()
+                        finalVerdict.text = "\(player1.text!)'s turn"
                     }
                     else{
                         player2Bar.startAnimating()
                         player1Bar.stopAnimating()
+                        finalVerdict.text = "\(player2.text!)'s turn"
                     }
                 }
             }
@@ -79,6 +91,9 @@ class ViewController: UIViewController {
         ref.child("board").child(connectionId).observe(.value, with: { [self] (snapshot) -> Void in
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in result {
+                    
+                    addToBoard(cell: child.key, sign: child.value! as! String)
+                    
                     if(child.key == "cell00"){
                         cell00.setImage(UIImage(named: child.value as! String), for: .normal)
                     }
@@ -106,19 +121,59 @@ class ViewController: UIViewController {
                     if child.key == "cell22"{
                         cell22.setImage(UIImage(named: child.value as! String), for: .normal)
                     }
-                    
-                    
+
                 }
             }
         })
     }
 
-    func checkWinMagnya(sign: String){
+    func addToBoard(cell: String, sign: String){
+        board[cell] = sign
+        if(checkBoard(playerSign: player)){
+            ref.child("won").child(connectionId).child(playerId).setValue("")
+            present((storyboard?.instantiateViewController(withIdentifier: "final"))!, animated: true)
+        }
+        if(checkBoard(playerSign: opponent)){
+            present((storyboard?.instantiateViewController(withIdentifier: "final"))!, animated: true)
+        }
         
+        
+    }
+    
+    func checkBoard(playerSign: String) -> Bool{
+        //cols
+        if(board["cell00"] == playerSign && board["cell01"] == playerSign && board["cell02"] == playerSign){
+            return true
+        }
+        if(board["cell10"] == playerSign && board["cell11"] == playerSign && board["cell12"] == playerSign){
+            return true
+        }
+        if(board["cell20"] == playerSign && board["cell21"] == playerSign && board["cell22"] == playerSign){
+            return true
+        }
+        //rows
+        if(board["cell00"] == playerSign && board["cell10"] == playerSign && board["cell20"] == playerSign){
+            return true
+        }
+        if(board["cell01"] == playerSign && board["cell11"] == playerSign && board["cell21"] == playerSign){
+            return true
+        }
+        if(board["cell02"] == playerSign && board["cell12"] == playerSign && board["cell22"] == playerSign){
+            return true
+        }
+        
+        //x's
+        if(board["cell00"] == playerSign && board["cell11"] == playerSign && board["cell22"] == playerSign){
+            return true
+        }
+        if(board["cell02"] == playerSign && board["cell11"] == playerSign && board["cell20"] == playerSign){
+            return true
+        }
+        return false
     }
 
     @IBAction func clicked(_ sender: UIButton) {
-        //print(sender.currentTitle)
+        
         if(isMyTurn){
             ref.child("board").child(connectionId).child(sender.currentTitle!).setValue(player)
             

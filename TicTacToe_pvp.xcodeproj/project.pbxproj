@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B75B3D4328749702004DC014 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B3D4228749702004DC014 /* FinalViewController.swift */; };
 		B7A8CE9E28586434006365A7 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8CE9D28586434006365A7 /* InitialViewController.swift */; };
 		B7A8CEA02858651C006365A7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8CE9F2858651C006365A7 /* MenuViewController.swift */; };
 		B7D27E6F285B179A00711604 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D27E6E285B179A00711604 /* GoogleService-Info.plist */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		35BEBB6BF74B57D8F291C081 /* Pods-TicTacToe_pvp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe_pvp.debug.xcconfig"; path = "Target Support Files/Pods-TicTacToe_pvp/Pods-TicTacToe_pvp.debug.xcconfig"; sourceTree = "<group>"; };
 		4A5B2DDAE4DE3146F8AEC27E /* Pods_TicTacToe_pvp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TicTacToe_pvp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B75B3D4228749702004DC014 /* FinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
 		B7A8CE9D28586434006365A7 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		B7A8CE9F2858651C006365A7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B7D27E6E285B179A00711604 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -54,7 +56,6 @@
 				35BEBB6BF74B57D8F291C081 /* Pods-TicTacToe_pvp.debug.xcconfig */,
 				EC60918CD93D00379F2B2426 /* Pods-TicTacToe_pvp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -89,6 +90,7 @@
 				B7EA7EBB2851D80E006D8857 /* Info.plist */,
 				B7A8CE9D28586434006365A7 /* InitialViewController.swift */,
 				B7A8CE9F2858651C006365A7 /* MenuViewController.swift */,
+				B75B3D4228749702004DC014 /* FinalViewController.swift */,
 			);
 			path = TicTacToe_pvp;
 			sourceTree = "<group>";
@@ -218,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7EA7EB22851D80D006D8857 /* ViewController.swift in Sources */,
+				B75B3D4328749702004DC014 /* FinalViewController.swift in Sources */,
 				B7A8CEA02858651C006365A7 /* MenuViewController.swift in Sources */,
 				B7EA7EAE2851D80D006D8857 /* AppDelegate.swift in Sources */,
 				B7EA7EB02851D80D006D8857 /* SceneDelegate.swift in Sources */,
