@@ -66,9 +66,15 @@ class MenuViewController: UIViewController {
                                     UserDefaults.standard.set(connectionId, forKey: "connectionId")
                                     UserDefaults.standard.set(playerId, forKey: "playerId")
                                     UserDefaults.standard.set("false", forKey: "isFirst")
+                                    opponentFound = true
                                     present((storyboard?.instantiateViewController(withIdentifier: "game"))!, animated: true)
                                 }
                             }
+                        }
+                        if(!opponentFound && status != "waiting"){
+                            connectionId = UUID().uuidString
+                            ref.child("connections").child(connectionId).child(playerId).child("player_name").setValue(user)
+                            status = "waiting"
                         }
                     }
                     

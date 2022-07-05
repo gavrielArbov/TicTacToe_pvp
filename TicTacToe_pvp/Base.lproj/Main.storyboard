@@ -142,6 +142,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="yJu-sz-DsK">
                                 <rect key="frame" x="-30" y="-6" width="474" height="908"/>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mzY-rA-wnN">
+                                <rect key="frame" x="333" y="100" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" systemColor="systemIndigoColor"/>
+                            </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="minus" translatesAutoresizingMaskIntoConstraints="NO" id="A6b-6v-2HI" userLabel="row">
                                 <rect key="frame" x="0.0" y="300" width="413" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -161,9 +166,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1Z-La-tDF">
                                 <rect key="frame" x="17" y="202" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
-                                </accessibility>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="cell00" image="background">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration"/>
@@ -172,11 +174,16 @@
                                     <action selector="clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RKO-JN-09W"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdX-gn-N6b">
-                                <rect key="frame" x="161" y="202" width="90" height="90"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-pl-BzJ">
+                                <rect key="frame" x="162" y="202" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="cell10" image="background"/>
+                                <state key="normal" title="cell10" image="background">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration"/>
+                                </state>
+                                <connections>
+                                    <action selector="clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H8h-rL-qOY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrG-hD-YVb">
                                 <rect key="frame" x="304" y="202" width="90" height="90"/>
@@ -242,6 +249,25 @@
                                     <action selector="clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5O4-0K-hp1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHN-bR-dOI">
+                                <rect key="frame" x="65" y="100" width="223" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hC-bO-XVl">
+                                <rect key="frame" x="65" y="651" width="223" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rQh-rC-gdt">
+                                <rect key="frame" x="324" y="651" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" systemColor="systemIndigoColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -256,17 +282,21 @@
                         <outlet property="cell00" destination="F1Z-La-tDF" id="5sZ-dQ-Yrk"/>
                         <outlet property="cell01" destination="k7S-tn-kgn" id="15r-Ii-f96"/>
                         <outlet property="cell02" destination="itW-a4-cza" id="pQ0-Cx-MOc"/>
-                        <outlet property="cell10" destination="KdX-gn-N6b" id="pYI-re-c3X"/>
+                        <outlet property="cell10" destination="pe2-pl-BzJ" id="ALi-Bx-soz"/>
                         <outlet property="cell11" destination="ueF-u4-LNK" id="kTA-1s-nth"/>
                         <outlet property="cell12" destination="Dsg-cT-4Uf" id="SzO-Lt-1Xl"/>
                         <outlet property="cell20" destination="yrG-hD-YVb" id="PPQ-lN-80J"/>
                         <outlet property="cell21" destination="oy6-bP-0T2" id="58k-t8-dj4"/>
                         <outlet property="cell22" destination="bUr-bP-F1a" id="dT2-Xw-7xc"/>
+                        <outlet property="player1" destination="GHN-bR-dOI" id="Iz0-Le-rMB"/>
+                        <outlet property="player1Bar" destination="mzY-rA-wnN" id="USz-48-PVg"/>
+                        <outlet property="player2" destination="4hC-bO-XVl" id="Y7p-Ux-s8e"/>
+                        <outlet property="player2Bar" destination="rQh-rC-gdt" id="ecU-Ak-fnr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959" y="-15"/>
+            <point key="canvasLocation" x="957.97101449275374" y="-15.401785714285714"/>
         </scene>
     </scenes>
     <resources>
@@ -278,6 +308,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

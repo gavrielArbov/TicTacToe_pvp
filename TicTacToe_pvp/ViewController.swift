@@ -20,11 +20,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var cell12: UIButton!
     @IBOutlet weak var cell22: UIButton!
     
+    @IBOutlet weak var player1: UILabel!
+    
+    @IBOutlet weak var player1Bar: UIActivityIndicatorView!
+    @IBOutlet weak var player2: UILabel!
+    @IBOutlet weak var player2Bar: UIActivityIndicatorView!
     
     var playerId = ""
     var isFirst = ""
     var isMyTurn = false
-    var playerSign = UIImage(named: "x.png")
     var connectionId = ""
     var player = ""
     var ref: DatabaseReference!
@@ -39,21 +43,18 @@ class ViewController: UIViewController {
         ref = Database.database().reference()
         
         if(isFirst == "true"){
-            playerSign = UIImage(named: "x.png")!
-            //opponentSign = UIImage(named: "o.png")!
             player = "x.png"
         }
         else{
-            playerSign = UIImage(named: "o.png")!
-            //opponentSign = UIImage(named: "x.png")!
             player = "o.png"
         }
         
-        ref.child("connections").child(connectionId).observe(.value, with: { [self] (snapshot) -> Void in
+        ref.child("connections").child(connectionId).observeSingleEvent(of: .value, with: { [self] (snapshot) -> Void in
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in result {
                     if(child.key != playerId){
                         opponentId = child.key
+                        //print(child("player_name"))
                     }
                 }
             }
@@ -63,8 +64,13 @@ class ViewController: UIViewController {
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in result {
                     if(child.key == playerId){
-                        print("my turn")
                         isMyTurn = true
+                        player1Bar.startAnimating()
+                        player2Bar.stopAnimating()
+                    }
+                    else{
+                        player2Bar.startAnimating()
+                        player1Bar.stopAnimating()
                     }
                 }
             }
@@ -100,15 +106,19 @@ class ViewController: UIViewController {
                     if child.key == "cell22"{
                         cell22.setImage(UIImage(named: child.value as! String), for: .normal)
                     }
+                    
+                    
                 }
             }
         })
     }
 
-
+    func checkWinMagnya(sign: String){
+        
+    }
 
     @IBAction func clicked(_ sender: UIButton) {
-        
+        //print(sender.currentTitle)
         if(isMyTurn){
             ref.child("board").child(connectionId).child(sender.currentTitle!).setValue(player)
             
